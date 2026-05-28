@@ -24,31 +24,31 @@ export default function MainLayout({ children }) {
 
                         {/* Menu centré - Desktop */}
                         <div className="hidden md:flex space-x-8 flex-1 justify-center">
-                            <Link href="/" className="hover:text-begros-orange transition duration-300">
+                            <a href="#" className="hover:text-begros-orange transition duration-300">
                                 Accueil
-                            </Link>
-                            <Link href="#services" className="hover:text-begros-orange transition duration-300">
+                            </a>
+                            <a href="#services" className="hover:text-begros-orange transition duration-300">
                                 Services
-                            </Link>
-                            <Link href="#fleet" className="hover:text-begros-orange transition duration-300">
+                            </a>
+                            <a href="#fleet" className="hover:text-begros-orange transition duration-300">
                                 Flotte
-                            </Link>
-                            <Link href="#about" className="hover:text-begros-orange transition duration-300">
+                            </a>
+                            <a href="#about" className="hover:text-begros-orange transition duration-300">
                                 À propos
-                            </Link>
-                            <Link href="#contact" className="hover:text-begros-orange transition duration-300">
+                            </a>
+                            <a href="#contact" className="hover:text-begros-orange transition duration-300">
                                 Contact
-                            </Link>
+                            </a>
                         </div>
 
                         {/* Bouton Contact - Desktop */}
                         <div className="hidden md:block">
-                            <Link
+                            <a
                                 href="#contact"
                                 className="bg-begros-orange hover:bg-orange-600 text-white px-6 py-2 rounded transition duration-300 font-semibold"
                             >
                                 Nous Contacter
-                            </Link>
+                            </a>
                         </div>
 
                         {/* Menu Mobile Toggle */}
@@ -63,48 +63,48 @@ export default function MainLayout({ children }) {
                     {/* Mobile Menu */}
                     {isOpen && (
                         <div className="md:hidden pb-4 space-y-2">
-                            <Link
-                                href="/"
+                            <a
+                                href="#"
                                 className="block px-3 py-2 rounded hover:bg-begros-blue transition"
                                 onClick={() => setIsOpen(false)}
                             >
                                 Accueil
-                            </Link>
-                            <Link
+                            </a>
+                            <a
                                 href="#services"
                                 className="block px-3 py-2 rounded hover:bg-begros-blue transition"
                                 onClick={() => setIsOpen(false)}
                             >
                                 Services
-                            </Link>
-                            <Link
+                            </a>
+                            <a
                                 href="#fleet"
                                 className="block px-3 py-2 rounded hover:bg-begros-blue transition"
                                 onClick={() => setIsOpen(false)}
                             >
                                 Flotte
-                            </Link>
-                            <Link
+                            </a>
+                            <a
                                 href="#about"
                                 className="block px-3 py-2 rounded hover:bg-begros-blue transition"
                                 onClick={() => setIsOpen(false)}
                             >
                                 À propos
-                            </Link>
-                            <Link
+                            </a>
+                            <a
                                 href="#contact"
                                 className="block px-3 py-2 rounded hover:bg-begros-blue transition"
                                 onClick={() => setIsOpen(false)}
                             >
                                 Contact
-                            </Link>
-                            <Link
+                            </a>
+                            <a
                                 href="#contact"
                                 className="block w-full bg-begros-orange hover:bg-orange-600 text-white px-3 py-2 rounded transition font-semibold mt-2"
                                 onClick={() => setIsOpen(false)}
                             >
                                 Nous Contacter
-                            </Link>
+                            </a>
                         </div>
                     )}
                 </div>
@@ -121,11 +121,9 @@ export default function MainLayout({ children }) {
                     <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
                         {/* Colonne 1: Logo & Description */}
                         <div>
-                            <h3 className="text-2xl font-bold mb-3">
-                                <span className="text-begros-orange">BG</span> Begro's
-                            </h3>
+                            <img src="/images/logo_begros.png" alt="Begro's Group" className="h-16 w-auto mb-3" />
                             <p className="text-gray-400 text-sm">
-                                Votre partenaire de confiance pour l'assistance au sol en Cameroun et en Afrique Centrale.
+                                Votre partenaire de confiance pour l'assistance au Cameroun et en Afrique Centrale.
                             </p>
                         </div>
 

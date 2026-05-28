@@ -1,4 +1,5 @@
 import MainLayout from '@/Layouts/MainLayout';
+import HeroSlider from '@/Components/HeroSlider';
 import { CheckCircle, Star, Download, Send, Users, Globe, Clock, Shield, Phone, Mail, MapPin } from 'lucide-react';
 import { useState } from 'react';
 
@@ -27,29 +28,8 @@ export default function Home() {
 
     return (
         <MainLayout>
-            {/* ==================== HERO SECTION ==================== */}
-            <section className="relative h-screen flex items-center justify-center bg-cover bg-center"
-                style={{
-                    backgroundImage: 'linear-gradient(rgba(0, 29, 77, 0.5), rgba(0, 29, 77, 0.5)), url("/images/avion-jet.jpg")',
-                }}
-            >
-                <div className="text-center text-white max-w-3xl px-4">
-                    <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
-                        Votre partenaire de confiance pour l'assistance au sol
-                    </h1>
-                    <p className="text-xl md:text-2xl text-begros-lightblue font-semibold mb-8">
-                        Cameroun & <span className="text-begros-orange">Afrique Centrale</span>
-                    </p>
-                    <div className="flex flex-col md:flex-row gap-4 justify-center items-center">
-                        <button className="bg-begros-orange hover:bg-orange-600 text-white px-8 py-3 rounded-lg font-semibold transition duration-300 text-lg">
-                            Commencer
-                        </button>
-                        <button className="border-2 border-white hover:bg-white hover:text-begros-darkblue text-white px-8 py-3 rounded-lg font-semibold transition duration-300">
-                            En savoir plus
-                        </button>
-                    </div>
-                </div>
-            </section>
+            {/* ==================== HERO SLIDER ==================== */}
+            <HeroSlider />
 
             {/* ==================== REASSURANCE BAR ==================== */}
             <section className="bg-begros-blue text-white py-8">
