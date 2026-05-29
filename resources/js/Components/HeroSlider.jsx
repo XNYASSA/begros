@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { MagneticButton } from './MagneticButton';
 
 export default function HeroSlider() {
     const [currentSlide, setCurrentSlide] = useState(0);
@@ -67,30 +68,38 @@ export default function HeroSlider() {
                     {slides[currentSlide].subtitle}
                 </p>
                 <div className="flex flex-col md:flex-row gap-4 justify-center items-center">
-                    <button className="bg-begros-orange hover:bg-orange-600 text-white px-8 py-3 rounded-lg font-semibold transition duration-300 text-lg">
-                        Commencer
-                    </button>
-                    <button className="border-2 border-white hover:bg-white hover:text-begros-darkblue text-white px-8 py-3 rounded-lg font-semibold transition duration-300">
-                        En savoir plus
-                    </button>
+                    <MagneticButton distance={0.5}>
+                        <button className="bg-begros-orange hover:bg-orange-600 text-white px-8 py-3 rounded-full font-semibold transition duration-300 text-lg">
+                            Commencer
+                        </button>
+                    </MagneticButton>
+                    <MagneticButton distance={0.5}>
+                        <button className="border-2 border-white hover:bg-white hover:text-begros-darkblue text-white px-8 py-3 rounded-full font-semibold transition duration-300">
+                            En savoir plus
+                        </button>
+                    </MagneticButton>
                 </div>
             </div>
 
             {/* Navigation Buttons */}
-            <button
-                onClick={prevSlide}
-                className="absolute left-8 top-1/2 -translate-y-1/2 z-20 bg-white/20 hover:bg-white/40 text-white p-3 rounded-full transition duration-300"
-                aria-label="Slide précédent"
-            >
-                <ChevronLeft size={32} />
-            </button>
-            <button
-                onClick={nextSlide}
-                className="absolute right-8 top-1/2 -translate-y-1/2 z-20 bg-white/20 hover:bg-white/40 text-white p-3 rounded-full transition duration-300"
-                aria-label="Slide suivant"
-            >
-                <ChevronRight size={32} />
-            </button>
+            <MagneticButton distance={0.5}>
+                <button
+                    onClick={prevSlide}
+                    className="absolute left-8 top-1/2 -translate-y-1/2 z-20 bg-white/20 hover:bg-white/40 text-white p-3 rounded-full transition duration-300"
+                    aria-label="Slide précédent"
+                >
+                    <ChevronLeft size={32} />
+                </button>
+            </MagneticButton>
+            <MagneticButton distance={0.5}>
+                <button
+                    onClick={nextSlide}
+                    className="absolute right-8 top-1/2 -translate-y-1/2 z-20 bg-white/20 hover:bg-white/40 text-white p-3 rounded-full transition duration-300"
+                    aria-label="Slide suivant"
+                >
+                    <ChevronRight size={32} />
+                </button>
+            </MagneticButton>
 
             {/* Dots Navigation */}
             <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex gap-3">

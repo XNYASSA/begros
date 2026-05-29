@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { MagneticButton } from './MagneticButton';
 
 const slides = [
     {
@@ -221,20 +222,24 @@ export default function PremiumHeroSlider() {
                                 transition={{ delay: 0.8, duration: 0.6 }}
                                 className="flex flex-col sm:flex-row gap-4 justify-center items-center"
                             >
-                                <motion.button
-                                    whileHover={{ scale: 1.05 }}
-                                    whileTap={{ scale: 0.95 }}
-                                    className="bg-begros-orange hover:bg-orange-600 text-white px-8 py-4 rounded-lg font-semibold transition duration-300 text-lg shadow-lg hover:shadow-xl"
-                                >
-                                    Commencer
-                                </motion.button>
-                                <motion.button
-                                    whileHover={{ scale: 1.05 }}
-                                    whileTap={{ scale: 0.95 }}
-                                    className="border-2 border-white hover:bg-white hover:text-begros-darkblue text-white px-8 py-4 rounded-lg font-semibold transition duration-300 backdrop-blur-sm"
-                                >
-                                    En savoir plus
-                                </motion.button>
+                                <MagneticButton distance={0.5}>
+                                    <motion.button
+                                        whileHover={{ scale: 1.05 }}
+                                        whileTap={{ scale: 0.95 }}
+                                        className="bg-begros-orange hover:bg-orange-600 text-white px-8 py-4 rounded-full font-semibold transition duration-300 text-lg shadow-lg hover:shadow-xl"
+                                    >
+                                        Commencer
+                                    </motion.button>
+                                </MagneticButton>
+                                <MagneticButton distance={0.5}>
+                                    <motion.button
+                                        whileHover={{ scale: 1.05 }}
+                                        whileTap={{ scale: 0.95 }}
+                                        className="border-2 border-white hover:bg-white hover:text-begros-darkblue text-white px-8 py-4 rounded-full font-semibold transition duration-300 backdrop-blur-sm"
+                                    >
+                                        En savoir plus
+                                    </motion.button>
+                                </MagneticButton>
                             </motion.div>
                         </div>
                     </motion.div>

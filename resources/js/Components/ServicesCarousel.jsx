@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { GlowCard } from '@/Components/GlowCard';
 import { ServiceModal } from '@/Components/ServiceModal';
+import { MagneticButton } from '@/Components/MagneticButton';
 import { useState } from 'react';
 
 const services = [
@@ -94,17 +95,19 @@ export function ServicesCarousel() {
                                         </div>
 
                                         {/* Action Button */}
-                                        <motion.button
-                                            className="relative z-20 bg-begros-orange hover:bg-orange-600 text-white px-6 py-2 rounded-lg font-semibold transition duration-300 text-sm pointer-events-auto"
-                                            whileHover={{ scale: 1.05 }}
-                                            whileTap={{ scale: 0.95 }}
-                                            onClick={(e) => {
-                                                e.stopPropagation();
-                                                openModal(service);
-                                            }}
-                                        >
-                                            Détails
-                                        </motion.button>
+                                        <MagneticButton distance={0.5}>
+                                            <motion.button
+                                                className="relative z-20 bg-begros-orange hover:bg-orange-600 text-white px-6 py-2 rounded-full font-semibold transition duration-300 text-sm pointer-events-auto"
+                                                whileHover={{ scale: 1.05 }}
+                                                whileTap={{ scale: 0.95 }}
+                                                onClick={(e) => {
+                                                    e.stopPropagation();
+                                                    openModal(service);
+                                                }}
+                                            >
+                                                Détails
+                                            </motion.button>
+                                        </MagneticButton>
                                     </div>
                                 </GlowCard>
                             </motion.div>

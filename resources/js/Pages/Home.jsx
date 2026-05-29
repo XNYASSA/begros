@@ -1,6 +1,7 @@
 import MainLayout from '@/Layouts/MainLayout';
 import PremiumHeroSlider from '@/Components/PremiumHeroSlider';
 import { ServicesCarousel } from '@/Components/ServicesCarousel';
+import { MagneticButton } from '@/Components/MagneticButton';
 import { CheckCircle, Star, Download, Send, Users, Globe, Clock, Shield, Phone, Mail, MapPin } from 'lucide-react';
 import { useState } from 'react';
 
@@ -115,9 +116,11 @@ export default function Home() {
                     <p className="text-lg text-gray-300 mb-8">
                         Avec nos bureaux stratégiquement situés à Douala et nos opérations couvrant l'ensemble de la région CEMAC, nous sommes prêts à servir vos opérations aériennes.
                     </p>
-                    <button className="bg-begros-orange hover:bg-orange-600 text-white px-8 py-3 rounded-lg font-semibold transition duration-300">
-                        Explorer nos régions
-                    </button>
+                    <MagneticButton distance={0.5}>
+                        <button className="bg-begros-orange hover:bg-orange-600 text-white px-8 py-3 rounded-full font-semibold transition duration-300">
+                            Explorer nos régions
+                        </button>
+                    </MagneticButton>
                 </div>
             </section>
 
@@ -282,9 +285,11 @@ export default function Home() {
                                     <p className="text-gray-200 mb-4">
                                         Documentation complète incluant procédures d'approche, données aéroportuaires et contacts locaux.
                                     </p>
-                                    <button className="bg-begros-orange hover:bg-orange-600 text-white px-6 py-2 rounded font-semibold transition duration-300">
-                                        Télécharger PDF
-                                    </button>
+                                    <MagneticButton distance={0.5}>
+                                        <button className="bg-begros-orange hover:bg-orange-600 text-white px-6 py-2 rounded-full font-semibold transition duration-300">
+                                            Télécharger PDF
+                                        </button>
+                                    </MagneticButton>
                                 </div>
                             </div>
                         </div>
@@ -300,9 +305,11 @@ export default function Home() {
                                     <p className="text-gray-200 mb-4">
                                         Guide complet des aéroports de la région avec services disponibles et tarifs.
                                     </p>
-                                    <button className="bg-begros-orange hover:bg-orange-600 text-white px-6 py-2 rounded font-semibold transition duration-300">
-                                        Télécharger PDF
-                                    </button>
+                                    <MagneticButton distance={0.5}>
+                                        <button className="bg-begros-orange hover:bg-orange-600 text-white px-6 py-2 rounded-full font-semibold transition duration-300">
+                                            Télécharger PDF
+                                        </button>
+                                    </MagneticButton>
                                 </div>
                             </div>
                         </div>
@@ -436,13 +443,15 @@ export default function Home() {
                                 />
                             </div>
 
-                            <button
-                                type="submit"
-                                className="w-full bg-begros-orange hover:bg-orange-600 text-white py-3 rounded-lg font-semibold transition duration-300 flex items-center justify-center gap-2"
-                            >
-                                <Send size={20} />
-                                Envoyer le message
-                            </button>
+                            <MagneticButton distance={0.5}>
+                                <button
+                                    type="submit"
+                                    className="w-full bg-begros-orange hover:bg-orange-600 text-white py-3 rounded-full font-semibold transition duration-300 flex items-center justify-center gap-2"
+                                >
+                                    <Send size={20} />
+                                    Envoyer le message
+                                </button>
+                            </MagneticButton>
                         </form>
                     </div>
                 </div>

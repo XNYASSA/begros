@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { Home, Zap, Plane, Info, Mail, Menu, X } from 'lucide-react';
 import { useState } from 'react';
+import { MagneticButton } from './MagneticButton';
 
 const menuItems = [
     {
@@ -145,12 +146,14 @@ export default function GlowMenu() {
 
             {/* Mobile Menu */}
             <div className="md:hidden">
-                <button
-                    onClick={() => setIsOpen(!isOpen)}
-                    className="text-white p-2 rounded-lg hover:bg-begros-blue/30 transition"
-                >
-                    {isOpen ? <X size={24} /> : <Menu size={24} />}
-                </button>
+                <MagneticButton distance={0.5}>
+                    <button
+                        onClick={() => setIsOpen(!isOpen)}
+                        className="text-white p-2 rounded-full hover:bg-begros-blue/30 transition"
+                    >
+                        {isOpen ? <X size={24} /> : <Menu size={24} />}
+                    </button>
+                </MagneticButton>
                 {isOpen && (
                     <motion.div
                         initial={{ opacity: 0, y: -10 }}

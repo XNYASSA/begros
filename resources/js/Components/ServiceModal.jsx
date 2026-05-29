@@ -1,5 +1,6 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { X } from 'lucide-react';
+import { MagneticButton } from './MagneticButton';
 
 export function ServiceModal({ service, isOpen, onClose }) {
     const serviceDetails = {
@@ -135,9 +136,11 @@ export function ServiceModal({ service, isOpen, onClose }) {
 
                                 {/* CTA */}
                                 <div className="pt-4 border-t border-gray-200">
-                                    <button className="w-full bg-begros-orange hover:bg-orange-600 text-white py-3 rounded-lg font-semibold transition duration-300">
-                                        Contactez-nous pour ce service
-                                    </button>
+                                    <MagneticButton distance={0.5}>
+                                        <button className="w-full bg-begros-orange hover:bg-orange-600 text-white py-3 rounded-full font-semibold transition duration-300">
+                                            Contactez-nous pour ce service
+                                        </button>
+                                    </MagneticButton>
                                 </div>
                             </div>
                         </div>
