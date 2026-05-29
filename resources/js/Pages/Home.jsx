@@ -18,11 +18,37 @@ export default function Home() {
         setFormData(prev => ({ ...prev, [name]: value }));
     };
 
-    const handleFormSubmit = (e) => {
+    const handleFormSubmit = async (e) => {
         e.preventDefault();
-        console.log('Form submitted:', formData);
-        alert('Message envoyé ! Notre équipe vous contactera bientôt.');
-        setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
+        console.log('📤 Données du formulaire:', formData);
+
+        try {
+            const csrfToken = document.querySelector('meta[name="csrf-token"]')?.content || '';
+            console.log('🔐 CSRF Token:', csrfToken ? '✅ Présent' : '❌ Absent');
+
+            const response = await fetch('/contact', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': csrfToken,
+                },
+                body: JSON.stringify(formData),
+            });
+
+            console.log('📨 Status réponse:', response.status);
+            const data = await response.json();
+            console.log('📬 Réponse serveur:', data);
+
+            if (data.success) {
+                alert('✅ ' + data.message);
+                setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
+            } else {
+                alert('❌ ' + data.message);
+            }
+        } catch (error) {
+            console.error('❌ Erreur réseau:', error);
+            alert('❌ Une erreur est survenue lors de l\'envoi du message. Veuillez réessayer.');
+        }
     };
 
     const whatsappLink = "https://wa.me/237677988929";

@@ -115,4 +115,15 @@ return [
         'name' => env('MAIL_FROM_NAME', env('APP_NAME', 'Laravel')),
     ],
 
+    /*
+    |--------------------------------------------------------------------------
+    | Ops Desk Email Address
+    |--------------------------------------------------------------------------
+    |
+    | Email address where contact form messages will be sent
+    |
+    */
+
+    'ops_email' => env('OPS_EMAIL', 'Ops@begros-group.com'),
+
 ];
