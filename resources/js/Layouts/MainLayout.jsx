@@ -1,17 +1,11 @@
 import { Link } from '@inertiajs/react';
-import { Menu, X, Phone, Mail, MapPin } from 'lucide-react';
-import { useState } from 'react';
+import { Phone, Mail, MapPin } from 'lucide-react';
+import GlowMenu from '@/Components/GlowMenu';
 
 export default function MainLayout({ children }) {
-    const [isOpen, setIsOpen] = useState(false);
-
-    const toggleMenu = () => {
-        setIsOpen(!isOpen);
-    };
-
     return (
         <div className="min-h-screen flex flex-col bg-white">
-            {/* Navbar */}
+            {/* Navbar avec GlowMenu */}
             <nav className="bg-begros-darkblue text-white sticky top-0 z-50 shadow-lg">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="flex justify-between items-center h-20">
@@ -22,23 +16,9 @@ export default function MainLayout({ children }) {
                             </Link>
                         </div>
 
-                        {/* Menu centré - Desktop */}
-                        <div className="hidden md:flex space-x-8 flex-1 justify-center">
-                            <a href="#" className="hover:text-begros-orange transition duration-300">
-                                Accueil
-                            </a>
-                            <a href="#services" className="hover:text-begros-orange transition duration-300">
-                                Services
-                            </a>
-                            <a href="#fleet" className="hover:text-begros-orange transition duration-300">
-                                Flotte
-                            </a>
-                            <a href="#about" className="hover:text-begros-orange transition duration-300">
-                                À propos
-                            </a>
-                            <a href="#contact" className="hover:text-begros-orange transition duration-300">
-                                Contact
-                            </a>
+                        {/* GlowMenu */}
+                        <div className="flex-1 flex justify-center">
+                            <GlowMenu />
                         </div>
 
                         {/* Bouton Contact - Desktop */}
@@ -50,63 +30,7 @@ export default function MainLayout({ children }) {
                                 Nous Contacter
                             </a>
                         </div>
-
-                        {/* Menu Mobile Toggle */}
-                        <button
-                            className="md:hidden"
-                            onClick={toggleMenu}
-                        >
-                            {isOpen ? <X size={24} /> : <Menu size={24} />}
-                        </button>
                     </div>
-
-                    {/* Mobile Menu */}
-                    {isOpen && (
-                        <div className="md:hidden pb-4 space-y-2">
-                            <a
-                                href="#"
-                                className="block px-3 py-2 rounded hover:bg-begros-blue transition"
-                                onClick={() => setIsOpen(false)}
-                            >
-                                Accueil
-                            </a>
-                            <a
-                                href="#services"
-                                className="block px-3 py-2 rounded hover:bg-begros-blue transition"
-                                onClick={() => setIsOpen(false)}
-                            >
-                                Services
-                            </a>
-                            <a
-                                href="#fleet"
-                                className="block px-3 py-2 rounded hover:bg-begros-blue transition"
-                                onClick={() => setIsOpen(false)}
-                            >
-                                Flotte
-                            </a>
-                            <a
-                                href="#about"
-                                className="block px-3 py-2 rounded hover:bg-begros-blue transition"
-                                onClick={() => setIsOpen(false)}
-                            >
-                                À propos
-                            </a>
-                            <a
-                                href="#contact"
-                                className="block px-3 py-2 rounded hover:bg-begros-blue transition"
-                                onClick={() => setIsOpen(false)}
-                            >
-                                Contact
-                            </a>
-                            <a
-                                href="#contact"
-                                className="block w-full bg-begros-orange hover:bg-orange-600 text-white px-3 py-2 rounded transition font-semibold mt-2"
-                                onClick={() => setIsOpen(false)}
-                            >
-                                Nous Contacter
-                            </a>
-                        </div>
-                    )}
                 </div>
             </nav>
 

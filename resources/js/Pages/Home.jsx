@@ -1,5 +1,6 @@
 import MainLayout from '@/Layouts/MainLayout';
-import HeroSlider from '@/Components/HeroSlider';
+import PremiumHeroSlider from '@/Components/PremiumHeroSlider';
+import { ServicesCarousel } from '@/Components/ServicesCarousel';
 import { CheckCircle, Star, Download, Send, Users, Globe, Clock, Shield, Phone, Mail, MapPin } from 'lucide-react';
 import { useState } from 'react';
 
@@ -28,8 +29,8 @@ export default function Home() {
 
     return (
         <MainLayout>
-            {/* ==================== HERO SLIDER ==================== */}
-            <HeroSlider />
+            {/* ==================== PREMIUM HERO SLIDER ==================== */}
+            <PremiumHeroSlider />
 
             {/* ==================== REASSURANCE BAR ==================== */}
             <section className="bg-begros-blue text-white py-8">
@@ -59,10 +60,10 @@ export default function Home() {
                 </div>
             </section>
 
-            {/* ==================== SERVICES SECTION ==================== */}
-            <section id="services" className="py-20 bg-gray-50">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="text-center mb-16">
+            {/* ==================== SERVICES CAROUSEL SECTION ==================== */}
+            <section id="services" className="py-16 bg-gray-50">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
+                    <div className="text-center">
                         <h2 className="text-4xl font-bold text-begros-darkblue mb-4">
                             Une assistance de vol complète
                         </h2>
@@ -70,61 +71,9 @@ export default function Home() {
                             Services spécialisés pour les opérations aériennes en Afrique
                         </p>
                     </div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                        {/* Service 1 - Assistance Équipage */}
-                        <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition duration-300">
-                            <img src="/images/reservation.jpg" alt="Assistance Équipage" className="h-48 w-full object-cover" />
-                            <div className="p-6">
-                                <h3 className="text-xl font-bold text-begros-darkblue mb-3">
-                                    Assistance Équipage
-                                </h3>
-                                <p className="text-gray-600 text-sm">
-                                    Assistance complète pour l'équipage incluant hôtels, transport et repas.
-                                </p>
-                            </div>
-                        </div>
-
-                        {/* Service 2 - Assistance Passagers */}
-                        <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition duration-300">
-                            <img src="/images/assistance_passager.jpg" alt="Assistance Passagers" className="h-48 w-full object-cover" />
-                            <div className="p-6">
-                                <h3 className="text-xl font-bold text-begros-darkblue mb-3">
-                                    Assistance Passagers
-                                </h3>
-                                <p className="text-gray-600 text-sm">
-                                    Services de correspondance et assistance confortable pour vos passagers.
-                                </p>
-                            </div>
-                        </div>
-
-                        {/* Service 3 - Services Techniques */}
-                        <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition duration-300">
-                            <img src="/images/recharge_carburant.jpg" alt="Services Techniques" className="h-48 w-full object-cover" />
-                            <div className="p-6">
-                                <h3 className="text-xl font-bold text-begros-darkblue mb-3">
-                                    Services Techniques
-                                </h3>
-                                <p className="text-gray-600 text-sm">
-                                    Ravitaillement, catering et services techniques spécialisés.
-                                </p>
-                            </div>
-                        </div>
-
-                        {/* Service 4 - Opérations d'Urgence */}
-                        <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition duration-300">
-                            <img src="/images/permis.jpg" alt="Opérations d'Urgence" className="h-48 w-full object-cover" />
-                            <div className="p-6">
-                                <h3 className="text-xl font-bold text-begros-darkblue mb-3">
-                                    Opérations d'Urgence
-                                </h3>
-                                <p className="text-gray-600 text-sm">
-                                    Assistance rapide et efficace en cas de situation d'urgence 24/7.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
                 </div>
+
+                <ServicesCarousel />
             </section>
 
             {/* ==================== BANNER INTERMÉDIAIRE ==================== */}
