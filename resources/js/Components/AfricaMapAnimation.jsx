@@ -263,18 +263,18 @@ export function AfricaMapAnimation() {
           key={plane.id}
           className="absolute pointer-events-none z-10 flex items-center justify-center"
           style={{
-            left: plane.x - 6,
-            top: plane.y - 6,
-            width: 12,
-            height: 12,
+            left: plane.x - 12,
+            top: plane.y - 12,
+            width: 24,
+            height: 24,
           }}
         >
           <Plane
-            size={12}
+            size={24}
             color={plane.color}
             fill={plane.color}
             style={{
-              filter: `drop-shadow(0 0 4px ${plane.color})`,
+              filter: `drop-shadow(0 0 6px ${plane.color})`,
               transform: 'rotate(45deg)',
             }}
           />
