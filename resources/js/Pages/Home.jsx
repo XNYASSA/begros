@@ -2,8 +2,10 @@ import MainLayout from '@/Layouts/MainLayout';
 import PremiumHeroSlider from '@/Components/PremiumHeroSlider';
 import { ServicesCarousel } from '@/Components/ServicesCarousel';
 import { MagneticButton } from '@/Components/MagneticButton';
+import { AfricaMapAnimation } from '@/Components/AfricaMapAnimation';
 import { CheckCircle, Star, Download, Send, Users, Globe, Clock, Shield, Phone, Mail, MapPin } from 'lucide-react';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
 
 export default function Home() {
     const [formData, setFormData] = useState({
@@ -13,6 +15,14 @@ export default function Home() {
         subject: '',
         message: '',
     });
+
+    const aeroportRef = useRef(null);
+    const { scrollY } = useScroll();
+
+    const backgroundSize = useTransform(scrollY,
+        [600, 1200],   // Démarre à 600px de scroll, finit à 1200px
+        ['100% 100%', '120% 120%']  // Zoom de 100% à 120%
+    );
 
     const handleFormChange = (e) => {
         const { name, value } = e.target;
@@ -104,9 +114,13 @@ export default function Home() {
             </section>
 
             {/* ==================== BANNER INTERMÉDIAIRE ==================== */}
-            <section id="about" className="relative py-20 bg-cover bg-center"
+            <motion.section
+                ref={aeroportRef}
+                id="about"
+                className="relative py-20 bg-cover bg-center"
                 style={{
                     backgroundImage: 'linear-gradient(rgba(0, 29, 77, 0.75), rgba(0, 29, 77, 0.75)), url("/images/aeroport.jpg")',
+                    backgroundSize,
                 }}
             >
                 <div className="max-w-4xl mx-auto text-center text-white px-4">
@@ -122,28 +136,18 @@ export default function Home() {
                         </button>
                     </MagneticButton>
                 </div>
-            </section>
+            </motion.section>
 
             {/* ==================== WHY US SECTION ==================== */}
             <section id="fleet" className="py-20 bg-white">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-                        {/* Gauche: Carte CEMAC */}
+                        {/* Gauche: Carte Afrique Interactive Animée */}
                         <div className="flex justify-center">
                             <div className="bg-begros-darkblue text-white p-8 rounded-lg w-full max-w-md overflow-hidden">
                                 <h3 className="text-2xl font-bold mb-6 text-center">ZONE CEMAC</h3>
-                                <div className="rounded-lg h-80 overflow-hidden relative">
-                                    <img src="/images/carte_afrique.jpg" alt="Carte CEMAC" className="w-full h-full object-cover" />
-                                    <div className="absolute inset-0 bg-black bg-opacity-30 flex items-end justify-center pb-6">
-                                        <div className="text-center text-white">
-                                            <p className="text-begros-lightblue font-semibold">
-                                                Couverture complète CEMAC
-                                            </p>
-                                            <p className="text-sm text-gray-200 mt-2">
-                                                Cameroun, Tchad, RCA, Congo, Gabon, Guinée Équatoriale
-                                            </p>
-                                        </div>
-                                    </div>
+                                <div className="rounded-lg h-80 overflow-hidden relative bg-gray-800">
+                                    <AfricaMapAnimation />
                                 </div>
                             </div>
                         </div>
