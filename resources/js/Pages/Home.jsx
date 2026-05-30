@@ -3,9 +3,10 @@ import PremiumHeroSlider from '@/Components/PremiumHeroSlider';
 import { ServicesCarousel } from '@/Components/ServicesCarousel';
 import { MagneticButton } from '@/Components/MagneticButton';
 import { AfricaMapAnimation } from '@/Components/AfricaMapAnimation';
+import { CinematicHeroSection } from '@/Components/CinematicHeroSection';
 import { CheckCircle, Star, Download, Send, Users, Globe, Clock, Shield, Phone, Mail, MapPin } from 'lucide-react';
-import { useState, useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { useState } from 'react';
+import { motion } from 'framer-motion';
 
 export default function Home() {
     const [formData, setFormData] = useState({
@@ -16,13 +17,6 @@ export default function Home() {
         message: '',
     });
 
-    const aeroportRef = useRef(null);
-    const { scrollY } = useScroll();
-
-    const backgroundSize = useTransform(scrollY,
-        [600, 1200],   // Démarre à 600px de scroll, finit à 1200px
-        ['100% 100%', '120% 120%']  // Zoom de 100% à 120%
-    );
 
     const handleFormChange = (e) => {
         const { name, value } = e.target;
@@ -113,30 +107,8 @@ export default function Home() {
                 <ServicesCarousel />
             </section>
 
-            {/* ==================== BANNER INTERMÉDIAIRE ==================== */}
-            <motion.section
-                ref={aeroportRef}
-                id="about"
-                className="relative py-20 bg-cover bg-center"
-                style={{
-                    backgroundImage: 'linear-gradient(rgba(0, 29, 77, 0.75), rgba(0, 29, 77, 0.75)), url("/images/aeroport.jpg")',
-                    backgroundSize,
-                }}
-            >
-                <div className="max-w-4xl mx-auto text-center text-white px-4">
-                    <h2 className="text-4xl font-bold mb-4">
-                        Basés à Douala, opérationnels dans toute la CEMAC
-                    </h2>
-                    <p className="text-lg text-gray-300 mb-8">
-                        Avec nos bureaux stratégiquement situés à Douala et nos opérations couvrant l'ensemble de la région CEMAC, nous sommes prêts à servir vos opérations aériennes.
-                    </p>
-                    <MagneticButton distance={0.5}>
-                        <button className="bg-begros-orange hover:bg-orange-600 text-white px-8 py-3 rounded-full font-semibold transition duration-300">
-                            Explorer nos régions
-                        </button>
-                    </MagneticButton>
-                </div>
-            </motion.section>
+            {/* ==================== CINEMATIC HERO SECTION ==================== */}
+            <CinematicHeroSection />
 
             {/* ==================== WHY US SECTION ==================== */}
             <section id="fleet" className="py-20 bg-white">
