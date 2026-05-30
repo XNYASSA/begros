@@ -38,7 +38,7 @@ export function AfricaMapAnimation() {
   const countryColorsRef = useRef({});
 
   const [planes, setPlanes] = useState([
-    { id: 1, x: 200, y: 200, vx: 0.3, vy: 0.25, color: '#4DB8E8' },
+    { id: 1, x: 200, y: 200, vx: 0.08, vy: 0.06, color: '#4DB8E8' },
   ]);
   const [highlightedCountry, setHighlightedCountry] = useState(null);
   const [highlightedCountries, setHighlightedCountries] = useState({});
@@ -263,18 +263,18 @@ export function AfricaMapAnimation() {
           key={plane.id}
           className="absolute pointer-events-none z-10 flex items-center justify-center"
           style={{
-            left: plane.x - 9,
-            top: plane.y - 9,
-            width: 18,
-            height: 18,
+            left: plane.x - 6,
+            top: plane.y - 6,
+            width: 12,
+            height: 12,
           }}
         >
           <Plane
-            size={18}
+            size={12}
             color={plane.color}
             fill={plane.color}
             style={{
-              filter: `drop-shadow(0 0 8px ${plane.color})`,
+              filter: `drop-shadow(0 0 4px ${plane.color})`,
               transform: 'rotate(45deg)',
             }}
           />
