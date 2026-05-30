@@ -1,18 +1,33 @@
 import { useEffect, useRef, useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, useMotionValueEvent } from 'framer-motion';
 
 export function AnimatedText({
   text,
   className = '',
   staggerDelay = 0.02,
   onComplete = null,
-  triggerInView = false
+  triggerInView = false,
+  scrollProgress = null,
+  isScrollDriven = false
 }) {
-  const [isVisible, setIsVisible] = useState(!triggerInView);
+  const [isVisible, setIsVisible] = useState(false);
+  const [progress, setProgress] = useState(0);
   const ref = useRef(null);
 
   useEffect(() => {
-    if (!triggerInView) return;
+    if (!isScrollDriven || !scrollProgress) return;
+
+    const unsubscribe = scrollProgress.on('change', setProgress);
+    return () => unsubscribe();
+  }, [isScrollDriven, scrollProgress]);
+
+  useEffect(() => {
+    if (isScrollDriven) return;
+
+    if (!triggerInView) {
+      setIsVisible(true);
+      return;
+    }
 
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -29,7 +44,7 @@ export function AnimatedText({
     }
 
     return () => observer.disconnect();
-  }, [triggerInView]);
+  }, [triggerInView, isScrollDriven]);
 
   const letters = text.split('');
 
@@ -57,6 +72,41 @@ export function AnimatedText({
     },
   };
 
+  // For scroll-driven animation: calculate which letters should be visible
+  const getLetterOpacity = (letterIndex) => {
+    if (!isScrollDriven) return 1;
+
+    // Dynamically calculate stagger based on number of letters
+    const totalLetters = letters.length;
+    const letterDuration = 1 / (totalLetters * 1.5); // Each letter duration
+    const letterStart = letterIndex * letterDuration;
+    const letterEnd = letterStart + letterDuration;
+
+    if (progress < letterStart) return 0;
+    if (progress > letterEnd) return 1;
+    return (progress - letterStart) / (letterEnd - letterStart);
+  };
+
+  if (isScrollDriven) {
+    return (
+      <div ref={ref} className={className}>
+        {letters.map((letter, i) => (
+          <motion.span
+            key={i}
+            style={{
+              display: 'inline-block',
+              whiteSpace: letter === ' ' ? 'pre' : 'normal',
+              opacity: getLetterOpacity(i),
+              transform: `translateY(${(1 - getLetterOpacity(i)) * 10}px)`,
+            }}
+          >
+            {letter === ' ' ? ' ' : letter}
+          </motion.span>
+        ))}
+      </div>
+    );
+  }
+
   return (
     <motion.div
       ref={ref}
@@ -71,7 +121,7 @@ export function AnimatedText({
           variants={letterVariants}
           style={{ display: 'inline-block', whiteSpace: letter === ' ' ? 'pre' : 'normal' }}
         >
-          {letter === ' ' ? ' ' : letter}
+          {letter === ' ' ? ' ' : letter}
         </motion.span>
       ))}
     </motion.div>
