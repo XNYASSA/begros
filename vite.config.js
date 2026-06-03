@@ -10,6 +10,8 @@ export default defineConfig({
         }),
         react(),
     ],
+
+    // Configuration de développement (pour npm run dev)
     server: {
         host: '0.0.0.0',
         port: 5173,
@@ -25,5 +27,41 @@ export default defineConfig({
             usePolling: true,
             interval: 100,
         },
+    },
+
+    // Configuration de production (pour npm run build)
+    build: {
+        // Dossier de sortie pour les assets compilés
+        outDir: 'public/build',
+
+        // Ne pas vider le dossier (pour garder les fichiers existants)
+        emptyOutDir: false,
+
+        // Optimisation Rollup
+        rollupOptions: {
+            output: {
+                // Format des noms de fichiers avec hash pour cache-busting
+                entryFileNames: 'js/[name]-[hash].js',
+                chunkFileNames: 'js/[name]-[hash].js',
+                assetFileNames: (assetInfo) => {
+                    if (assetInfo.name.endsWith('.css')) {
+                        return 'css/[name]-[hash][extname]';
+                    }
+                    return 'assets/[name]-[hash][extname]';
+                },
+            },
+        },
+
+        // Minification
+        minify: 'terser',
+        terserOptions: {
+            compress: {
+                drop_console: true, // Supprimer les console.log en production
+            },
+        },
+
+        // Seuil pour warning sur les fichiers trop gros
+        reportCompressedSize: true,
+        chunkSizeWarningLimit: 1000,
     },
 });
