@@ -1,0 +1,17 @@
+<IfModule mod_rewrite.c>
+    <IfModule mod_negotiation.c>
+        Options -MultiViews -Indexes
+    </IfModule>
+
+    RewriteEngine On
+
+    # Si le fichier existe dans public/ (assets CSS/JS/images), le servir directement
+    RewriteCond %{REQUEST_URI} !^/public/
+    RewriteCond public/%{REQUEST_FILENAME} -f
+    RewriteRule ^(.*)$ public/$1 [L]
+
+    # Sinon envoyer vers public/index.php (Laravel)
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^ public/index.php [QSA,L]
+</IfModule>
