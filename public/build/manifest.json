@@ -174,8 +174,8 @@
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.jsx",
-      "_MagneticButton-3Vb3GUQt.js",
       "_transition-C4Bt9xOw.js",
+      "_MagneticButton-3Vb3GUQt.js",
       "_TextInput-CuS4kI8e.js",
       "_InputLabel-DH5debLC.js"
     ]
