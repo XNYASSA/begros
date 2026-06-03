@@ -34,8 +34,8 @@ export default defineConfig({
         // Dossier de sortie pour les assets compilés
         outDir: 'public/build',
 
-        // Ne pas vider le dossier (pour garder les fichiers existants)
-        emptyOutDir: false,
+        // Vider le dossier avant chaque build (évite les fichiers obsolètes)
+        emptyOutDir: true,
 
         // Optimisation Rollup
         rollupOptions: {

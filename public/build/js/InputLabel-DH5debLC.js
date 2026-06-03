@@ -1,0 +1,1 @@
+import{t as a}from"./app-CDu0CA2_.js";var e=a();function t({value:a,className:t="",children:r,...s}){return(0,e.jsx)("label",{...s,className:"block text-sm font-medium text-gray-700 "+t,children:a||r})}export{t};

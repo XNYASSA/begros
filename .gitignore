@@ -17,7 +17,7 @@
 /public/storage
 /storage/*.key
 /storage/pail
-# /vendor  ← inclus dans git pour déploiement Hostinger sans SSH
+/vendor
 _ide_helper.php
 Homestead.json
 Homestead.yaml
